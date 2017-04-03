@@ -62,6 +62,7 @@ public class DatabaseUtil {
     public static void closeConnection() {
         try {
             if (conn != null) conn.close();
+            conn = null;
         } catch (SQLException sqlError) {
             sqlError.printStackTrace();
         }
@@ -90,6 +91,7 @@ public class DatabaseUtil {
         String sql = "insert into cm_user" +
                 " (user_account, user_password, user_nickname, user_sign_up_time)" +
                 " values ('" + account + "', '" + _password + "', '" + nickName + "'," + time + ")";
+        System.out.println("INFO: addUser(" + account + "," + password + "," + nickName + ")");
         return execSQL(sql);
     }
 
